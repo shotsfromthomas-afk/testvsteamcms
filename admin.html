@@ -36,10 +36,12 @@
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on('init', user => {
         updateAuthUI(user);
-        // Recovery-Token prüfen und ggf. Widget öffnen
+        // Recovery- oder Confirmation-Token prüfen und ggf. Widget öffnen
         const params = new URLSearchParams(window.location.hash.slice(1));
         if (params.has('recovery_token')) {
           window.netlifyIdentity.open('recovery');
+        } else if (params.has('confirmation_token')) {
+          window.netlifyIdentity.open('signup');
         }
       });
       window.netlifyIdentity.on('login', user => {
