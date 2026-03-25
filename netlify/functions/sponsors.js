@@ -1,6 +1,6 @@
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
-exports.handler = async function(event) {
+exports.handler = async function(event, context) {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -9,55 +9,118 @@ exports.handler = async function(event) {
   }
 
   const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-  const REPO = process.env.REPO || 'shotsfromthomas-afk/testvsteamcms';
+  const REPO = 'shotsfromthomas-afk/testvsteamcms';
   const FILE_PATH = 'sponsors.json';
-  const BRANCH = process.env.BRANCH || 'main';
+  const BRANCH = 'main';
 
   if (!GITHUB_TOKEN) {
     return {
       statusCode: 500,
-      body: 'GitHub token not configured',
+      body: 'GitHub Token fehlt',
     };
   }
 
-  const body = event.body;
-  const content = Buffer.from(body).toString('base64');
+  // Stelle sicher, dass der Body als JSON gespeichert wird
+  let sponsorsData;
+  try {
+    sponsorsData = JSON.stringify(JSON.parse(event.body), null, 2);
+  } catch (e) {
+    return {
+      statusCode: 400,
+      body: 'Ungültiges JSON im Request-Body',
+    };
+  }
 
-  // Get the current file SHA
-  const getRes = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}?ref=${BRANCH}`, {
-    headers: {
-      'Authorization': `token ${GITHUB_TOKEN}`,
-      'Accept': 'application/vnd.github.v3+json',
-    },
-  });
-  const getData = await getRes.json();
-  const sha = getData.sha;
+  // 1. Hole den aktuellen Commit SHA und tree SHA
+  const apiBase = `https://api.github.com/repos/${REPO}`;
+  const headers = {
+    'Authorization': `token ${GITHUB_TOKEN}`,
+    'Accept': 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json',
+  };
 
-  // Commit the new file
-  const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE_PATH}`, {
-    method: 'PUT',
-    headers: {
-      'Authorization': `token ${GITHUB_TOKEN}`,
-      'Accept': 'application/vnd.github.v3+json',
-    },
+  // Hole den aktuellen Commit SHA
+  const refRes = await fetch(`${apiBase}/git/refs/heads/${BRANCH}`, { headers });
+  if (!refRes.ok) {
+    return { statusCode: 500, body: 'Fehler beim Lesen des Branch-Refs' };
+  }
+  const refData = await refRes.json();
+  const latestCommitSha = refData.object.sha;
+
+  // Hole den Commit selbst (um tree SHA zu bekommen)
+  const commitRes = await fetch(`${apiBase}/git/commits/${latestCommitSha}`, { headers });
+  if (!commitRes.ok) {
+    return { statusCode: 500, body: 'Fehler beim Lesen des Commits' };
+  }
+  const commitData = await commitRes.json();
+  const baseTreeSha = commitData.tree.sha;
+
+  // 2. Erstelle einen neuen Blob für die Datei
+  const blobRes = await fetch(`${apiBase}/git/blobs`, {
+    method: 'POST',
+    headers,
     body: JSON.stringify({
-      message: 'Update sponsors.json via Netlify Function',
-      content,
-      sha,
-      branch: BRANCH,
+      content: sponsorsData,
+      encoding: 'utf-8',
     }),
   });
-
-  if (res.ok) {
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ success: true }),
-    };
-  } else {
-    const error = await res.text();
-    return {
-      statusCode: 500,
-      body: error,
-    };
+  if (!blobRes.ok) {
+    return { statusCode: 500, body: 'Fehler beim Erstellen des Blobs' };
   }
+  const blobData = await blobRes.json();
+
+  // 3. Erstelle einen neuen Tree mit dem neuen Blob
+  const treeRes = await fetch(`${apiBase}/git/trees`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({
+      base_tree: baseTreeSha,
+      tree: [
+        {
+          path: FILE_PATH,
+          mode: '100644',
+          type: 'blob',
+          sha: blobData.sha,
+        },
+      ],
+    }),
+  });
+  if (!treeRes.ok) {
+    return { statusCode: 500, body: 'Fehler beim Erstellen des Trees' };
+  }
+  const treeData = await treeRes.json();
+
+  // 4. Erstelle einen neuen Commit
+  const commitMsg = 'Sponsoren via Netlify CMS aktualisiert';
+  const newCommitRes = await fetch(`${apiBase}/git/commits`, {
+    method: 'POST',
+    headers,
+    body: JSON.stringify({
+      message: commitMsg,
+      tree: treeData.sha,
+      parents: [latestCommitSha],
+    }),
+  });
+  if (!newCommitRes.ok) {
+    return { statusCode: 500, body: 'Fehler beim Erstellen des Commits' };
+  }
+  const newCommitData = await newCommitRes.json();
+
+  // 5. Update den Branch-Ref
+  const updateRefRes = await fetch(`${apiBase}/git/refs/heads/${BRANCH}`, {
+    method: 'PATCH',
+    headers,
+    body: JSON.stringify({
+      sha: newCommitData.sha,
+      force: false,
+    }),
+  });
+  if (!updateRefRes.ok) {
+    return { statusCode: 500, body: 'Fehler beim Aktualisieren des Branch-Refs' };
+  }
+
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ success: true }),
+  };
 };
