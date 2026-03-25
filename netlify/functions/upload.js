@@ -24,23 +24,40 @@ exports.handler = async function(event, context) {
   if (!boundary) {
     return { statusCode: 400, body: 'No boundary found' };
   }
+
   const bodyBuffer = Buffer.from(event.body, event.isBase64Encoded ? 'base64' : 'utf8');
-  const parts = bodyBuffer.toString().split('--' + boundary);
+  // Suche die Start- und End-Offsets des Datei-Buffers im Multipart-Body
+  const boundaryBuffer = Buffer.from('--' + boundary);
+  const parts = [];
+  let start = bodyBuffer.indexOf(boundaryBuffer);
+  while (start !== -1) {
+    const end = bodyBuffer.indexOf(boundaryBuffer, start + boundaryBuffer.length);
+    if (end === -1) break;
+    parts.push(bodyBuffer.slice(start + boundaryBuffer.length, end));
+    start = end;
+  }
+  // Finde den Part mit dem File
   let filePart = parts.find(p => p.includes('Content-Disposition: form-data; name="file"'));
   if (!filePart) {
     return { statusCode: 400, body: 'No file found' };
   }
-  // Dateiname extrahieren
-  const filenameMatch = /filename="([^"]+)"/.exec(filePart);
-  let origFilename = filenameMatch ? filenameMatch[1] : 'upload.jpg';
-  const ext = origFilename.split('.').pop().toLowerCase();
-  const filename = IMAGES_PATH + Date.now() + '-' + Math.random().toString(36).substring(2, 8) + '.' + ext;
-  // Dateiinhalt extrahieren
-  const match = /\r\n\r\n([\s\S]*)\r\n--/.exec(filePart + '--');
-  if (!match) {
+  // Header und Body trennen
+  const headerEnd = filePart.indexOf('\r\n\r\n');
+  if (headerEnd === -1) {
     return { statusCode: 400, body: 'No file content found' };
   }
-  const fileContent = Buffer.from(match[1], 'binary');
+  const header = filePart.slice(0, headerEnd).toString();
+  let origFilename = 'upload.jpg';
+  const filenameMatch = /filename="([^"]+)"/.exec(header);
+  if (filenameMatch) origFilename = filenameMatch[1];
+  const ext = origFilename.split('.').pop().toLowerCase();
+  const filename = IMAGES_PATH + Date.now() + '-' + Math.random().toString(36).substring(2, 8) + '.' + ext;
+  // Der eigentliche Dateiinhalt
+  let fileContent = filePart.slice(headerEnd + 4);
+  // Entferne evtl. abschließende CRLFs
+  if (fileContent[fileContent.length - 2] === 13 && fileContent[fileContent.length - 1] === 10) {
+    fileContent = fileContent.slice(0, -2);
+  }
   const contentBase64 = fileContent.toString('base64');
 
   // GitHub API: Datei als Blob ins Repo schreiben
