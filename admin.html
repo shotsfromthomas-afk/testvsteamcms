@@ -21,7 +21,7 @@
         <h1 class="text-3xl font-bold">Team bearbeiten</h1>
         <button id="logout-btn" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Logout</button>
       </div>
-      <form id="team-form" class="space-y-8 mb-12">
+      <form id="team-form" class="space-y-8 mb-12" autocomplete="off">
         <div id="team-list"></div>
         <button type="button" id="add-member" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Mitglied hinzufügen</button>
         <div class="flex justify-end mt-8">
@@ -30,7 +30,7 @@
       </form>
       <hr class="my-8">
       <h2 class="text-2xl font-bold mb-4">Sponsoren & Partner bearbeiten</h2>
-      <form id="sponsor-form" class="space-y-8">
+      <form id="sponsor-form" class="space-y-8" autocomplete="off">
         <div id="sponsor-list"></div>
         <button type="button" id="add-sponsor" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Sponsor hinzufügen</button>
         <div class="flex justify-end mt-8">
@@ -154,6 +154,7 @@
 
       form.onsubmit = function(e) {
         e.preventDefault();
+        // Nur Team speichern
         const members = Array.from(teamList.children).map(div => {
           const [name, role] = div.querySelectorAll('input[type="text"]');
           const image = div.querySelector('input[name="image"]').value;
@@ -220,6 +221,7 @@
 
       sponsorForm.onsubmit = function(e) {
         e.preventDefault();
+        // Nur Sponsoren speichern
         const sponsors = Array.from(sponsorList.children).map(div => {
           const name = div.querySelector('input[name="name"]').value;
           return { name };
