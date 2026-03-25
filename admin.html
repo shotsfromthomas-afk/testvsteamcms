@@ -36,6 +36,11 @@
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on('init', user => {
         updateAuthUI(user);
+        // Recovery-Token prüfen und ggf. Widget öffnen
+        const params = new URLSearchParams(window.location.hash.slice(1));
+        if (params.has('recovery_token')) {
+          window.netlifyIdentity.open('recovery');
+        }
       });
       window.netlifyIdentity.on('login', user => {
         updateAuthUI(user);
