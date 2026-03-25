@@ -21,14 +21,23 @@
         <h1 class="text-3xl font-bold">Team bearbeiten</h1>
         <button id="logout-btn" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Logout</button>
       </div>
-      <form id="team-form" class="space-y-8">
+      <form id="team-form" class="space-y-8 mb-12">
         <div id="team-list"></div>
         <button type="button" id="add-member" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Mitglied hinzufügen</button>
         <div class="flex justify-end mt-8">
           <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Speichern</button>
         </div>
       </form>
-      <div id="save-status" class="mt-4 text-green-700 font-semibold hidden">Gespeichert!</div>
+      <hr class="my-8">
+      <h2 class="text-2xl font-bold mb-4">Sponsoren & Partner bearbeiten</h2>
+      <form id="sponsor-form" class="space-y-8">
+        <div id="sponsor-list"></div>
+        <button type="button" id="add-sponsor" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Sponsor hinzufügen</button>
+        <div class="flex justify-end mt-8">
+          <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Speichern</button>
+        </div>
+      </form>
+      <div id="sponsor-save-status" class="mt-4 text-green-700 font-semibold hidden">Gespeichert!</div>
     </div>
   </div>
   <script>
@@ -76,7 +85,9 @@
     window.netlifyIdentity.init();
     // --- Admin-Logik (nur nach Login ausführen) ---
     let teamData = [];
+    let sponsorData = [];
     function setupAdmin() {
+      // --- Team ---
       const teamList = document.getElementById('team-list');
       const form = document.getElementById('team-form');
       const saveStatus = document.getElementById('save-status');
@@ -169,6 +180,67 @@
         })
         .catch(() => {
           saveStatus.textContent = 'Fehler beim Speichern!';
+        });
+      };
+
+      // --- Sponsoren ---
+      const sponsorList = document.getElementById('sponsor-list');
+      const sponsorForm = document.getElementById('sponsor-form');
+      const sponsorSaveStatus = document.getElementById('sponsor-save-status');
+
+      function renderSponsors() {
+        sponsorList.innerHTML = '';
+        sponsorData.forEach((sponsor, idx) => {
+          const sponsorDiv = document.createElement('div');
+          sponsorDiv.className = 'flex flex-row items-center gap-4 mb-4 border-b pb-2';
+          sponsorDiv.innerHTML = `
+            <input type="text" name="name" placeholder="Sponsor-Name" value="${sponsor.name || ''}" class="border px-2 py-1 rounded w-full" required />
+            <button type="button" class="text-red-600 hover:underline" onclick="removeSponsor(${idx})">Entfernen</button>
+          `;
+          sponsorList.appendChild(sponsorDiv);
+        });
+      }
+
+      window.removeSponsor = function(idx) {
+        sponsorData.splice(idx, 1);
+        renderSponsors();
+      }
+
+      document.getElementById('add-sponsor').onclick = function() {
+        sponsorData.push({ name: '' });
+        renderSponsors();
+      };
+
+      fetch('sponsors.json')
+        .then(r => r.json())
+        .then(data => {
+          sponsorData = data;
+          renderSponsors();
+        });
+
+      sponsorForm.onsubmit = function(e) {
+        e.preventDefault();
+        const sponsors = Array.from(sponsorList.children).map(div => {
+          const name = div.querySelector('input[name="name"]').value;
+          return { name };
+        });
+        sponsorSaveStatus.classList.remove('hidden');
+        sponsorSaveStatus.textContent = 'Speichern...';
+        fetch('/.netlify/functions/sponsors', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(sponsors)
+        })
+        .then(res => {
+          if (res.ok) {
+            sponsorSaveStatus.textContent = 'Gespeichert & veröffentlicht!';
+            setTimeout(() => sponsorSaveStatus.classList.add('hidden'), 2000);
+          } else {
+            sponsorSaveStatus.textContent = 'Fehler beim Speichern!';
+          }
+        })
+        .catch(() => {
+          sponsorSaveStatus.textContent = 'Fehler beim Speichern!';
         });
       };
     }
