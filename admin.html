@@ -8,113 +8,172 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50 text-gray-900 font-sans min-h-screen flex flex-col items-center py-12">
-  <h1 class="text-3xl font-bold mb-8">Team bearbeiten</h1>
-  <div class="w-full max-w-2xl bg-white rounded-xl shadow p-8">
-    <form id="team-form" class="space-y-8">
-      <div id="team-list"></div>
-      <button type="button" id="add-member" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Mitglied hinzufügen</button>
-      <div class="flex justify-end mt-8">
-        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Speichern</button>
+  <!-- Netlify Identity Widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+  <div id="auth-area" class="w-full max-w-2xl bg-white rounded-xl shadow p-8 flex flex-col items-center justify-center min-h-[300px]">
+    <div id="login-area" class="flex flex-col items-center">
+      <h2 class="text-2xl font-bold mb-4">Admin Login</h2>
+      <button id="login-btn" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Login mit Netlify Identity</button>
+    </div>
+    <div id="admin-area" class="hidden">
+      <div class="flex justify-between items-center mb-8">
+        <h1 class="text-3xl font-bold">Team bearbeiten</h1>
+        <button id="logout-btn" class="bg-gray-200 text-gray-800 px-4 py-2 rounded hover:bg-gray-300">Logout</button>
       </div>
-    </form>
-    <div id="save-status" class="mt-4 text-green-700 font-semibold hidden">Gespeichert!</div>
+      <form id="team-form" class="space-y-8">
+        <div id="team-list"></div>
+        <button type="button" id="add-member" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Mitglied hinzufügen</button>
+        <div class="flex justify-end mt-8">
+          <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Speichern</button>
+        </div>
+      </form>
+      <div id="save-status" class="mt-4 text-green-700 font-semibold hidden">Gespeichert!</div>
+    </div>
   </div>
   <script>
+    // Netlify Identity Initialisierung
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        updateAuthUI(user);
+      });
+      window.netlifyIdentity.on('login', user => {
+        updateAuthUI(user);
+        window.netlifyIdentity.close();
+      });
+      window.netlifyIdentity.on('logout', () => {
+        updateAuthUI(null);
+      });
+    }
+
+    function updateAuthUI(user) {
+      const loginArea = document.getElementById('login-area');
+      const adminArea = document.getElementById('admin-area');
+      if (user) {
+        loginArea.classList.add('hidden');
+        adminArea.classList.remove('hidden');
+      } else {
+        loginArea.classList.remove('hidden');
+        adminArea.classList.add('hidden');
+      }
+    }
+
+    document.getElementById('login-btn').onclick = function() {
+      window.netlifyIdentity.open('login');
+    };
+    document.getElementById('logout-btn').onclick = function() {
+      window.netlifyIdentity.logout();
+    };
+
+    // Netlify Identity Widget laden
+    window.netlifyIdentity.init();
+    // --- Admin-Logik (nur nach Login ausführen) ---
     let teamData = [];
-    const teamList = document.getElementById('team-list');
-    const form = document.getElementById('team-form');
-    const saveStatus = document.getElementById('save-status');
+    function setupAdmin() {
+      const teamList = document.getElementById('team-list');
+      const form = document.getElementById('team-form');
+      const saveStatus = document.getElementById('save-status');
 
-    function renderTeam() {
-      teamList.innerHTML = '';
-      teamData.forEach((member, idx) => {
-        const memberDiv = document.createElement('div');
-        memberDiv.className = 'flex flex-col md:flex-row items-center gap-4 mb-6 border-b pb-4';
-        memberDiv.innerHTML = `
-          <input type="text" name="name" placeholder="Name" value="${member.name || ''}" class="border px-2 py-1 rounded w-full md:w-1/3" required />
-          <input type="text" name="role" placeholder="Rolle" value="${member.role || ''}" class="border px-2 py-1 rounded w-full md:w-1/3" required />
-          <div class="flex flex-col w-full md:w-1/3">
-            <input type="text" name="image" placeholder="Bild-URL" value="${member.image || ''}" class="border px-2 py-1 rounded mb-1" required />
-            <input type="file" accept="image/*" class="file-upload" data-idx="${idx}" />
-          </div>
-          <button type="button" class="text-red-600 hover:underline" onclick="removeMember(${idx})">Entfernen</button>
-        `;
-        teamList.appendChild(memberDiv);
-      });
+      function renderTeam() {
+        teamList.innerHTML = '';
+        teamData.forEach((member, idx) => {
+          const memberDiv = document.createElement('div');
+          memberDiv.className = 'flex flex-col md:flex-row items-center gap-4 mb-6 border-b pb-4';
+          memberDiv.innerHTML = `
+            <input type="text" name="name" placeholder="Name" value="${member.name || ''}" class="border px-2 py-1 rounded w-full md:w-1/3" required />
+            <input type="text" name="role" placeholder="Rolle" value="${member.role || ''}" class="border px-2 py-1 rounded w-full md:w-1/3" required />
+            <div class="flex flex-col w-full md:w-1/3">
+              <input type="text" name="image" placeholder="Bild-URL" value="${member.image || ''}" class="border px-2 py-1 rounded mb-1" required />
+              <input type="file" accept="image/*" class="file-upload" data-idx="${idx}" />
+            </div>
+            <button type="button" class="text-red-600 hover:underline" onclick="removeMember(${idx})">Entfernen</button>
+          `;
+          teamList.appendChild(memberDiv);
+        });
 
-      // File-Upload-Handler für jedes File-Input
-      Array.from(teamList.querySelectorAll('.file-upload')).forEach(input => {
-        input.onchange = async function(e) {
-          const file = e.target.files[0];
-          if (!file) return;
-          const idx = parseInt(e.target.dataset.idx);
-          const formData = new FormData();
-          formData.append('file', file);
-          // Upload an Netlify Function
-          const res = await fetch('/.netlify/functions/upload', {
-            method: 'POST',
-            body: formData
-          });
-          if (res.ok) {
-            const { url } = await res.json();
-            // Setze Bild-URL im Input-Feld
-            const imageInput = e.target.parentElement.querySelector('input[name="image"]');
-            imageInput.value = url;
-            teamData[idx].image = url;
-          } else {
-            alert('Bild-Upload fehlgeschlagen!');
-          }
-        };
-      });
-    }
+        // File-Upload-Handler für jedes File-Input
+        Array.from(teamList.querySelectorAll('.file-upload')).forEach(input => {
+          input.onchange = async function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            const idx = parseInt(e.target.dataset.idx);
+            const formData = new FormData();
+            formData.append('file', file);
+            // Upload an Netlify Function
+            const res = await fetch('/.netlify/functions/upload', {
+              method: 'POST',
+              body: formData
+            });
+            if (res.ok) {
+              const { url } = await res.json();
+              // Setze Bild-URL im Input-Feld
+              const imageInput = e.target.parentElement.querySelector('input[name="image"]');
+              imageInput.value = url;
+              teamData[idx].image = url;
+            } else {
+              alert('Bild-Upload fehlgeschlagen!');
+            }
+          };
+        });
+      }
 
-    window.removeMember = function(idx) {
-      teamData.splice(idx, 1);
-      renderTeam();
-    }
-
-    document.getElementById('add-member').onclick = function() {
-      teamData.push({ name: '', role: '', image: '' });
-      renderTeam();
-    };
-
-    fetch('team.json')
-      .then(r => r.json())
-      .then(data => {
-        teamData = data;
+      window.removeMember = function(idx) {
+        teamData.splice(idx, 1);
         renderTeam();
-      });
+      }
 
-    form.onsubmit = function(e) {
-      e.preventDefault();
-      const members = Array.from(teamList.children).map(div => {
-        const [name, role] = div.querySelectorAll('input[type="text"]');
-        const image = div.querySelector('input[name="image"]').value;
-        return {
-          name: name.value,
-          role: role.value,
-          image: image
-        };
-      });
-      saveStatus.classList.remove('hidden');
-      saveStatus.textContent = 'Speichern...';
-      fetch('/.netlify/functions/team', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(members)
-      })
-      .then(res => {
-        if (res.ok) {
-          saveStatus.textContent = 'Gespeichert & veröffentlicht!';
-          setTimeout(() => saveStatus.classList.add('hidden'), 2000);
-        } else {
+      document.getElementById('add-member').onclick = function() {
+        teamData.push({ name: '', role: '', image: '' });
+        renderTeam();
+      };
+
+      fetch('team.json')
+        .then(r => r.json())
+        .then(data => {
+          teamData = data;
+          renderTeam();
+        });
+
+      form.onsubmit = function(e) {
+        e.preventDefault();
+        const members = Array.from(teamList.children).map(div => {
+          const [name, role] = div.querySelectorAll('input[type="text"]');
+          const image = div.querySelector('input[name="image"]').value;
+          return {
+            name: name.value,
+            role: role.value,
+            image: image
+          };
+        });
+        saveStatus.classList.remove('hidden');
+        saveStatus.textContent = 'Speichern...';
+        fetch('/.netlify/functions/team', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(members)
+        })
+        .then(res => {
+          if (res.ok) {
+            saveStatus.textContent = 'Gespeichert & veröffentlicht!';
+            setTimeout(() => saveStatus.classList.add('hidden'), 2000);
+          } else {
+            saveStatus.textContent = 'Fehler beim Speichern!';
+          }
+        })
+        .catch(() => {
           saveStatus.textContent = 'Fehler beim Speichern!';
-        }
-      })
-      .catch(() => {
-        saveStatus.textContent = 'Fehler beim Speichern!';
-      });
-    };
+        });
+      };
+    }
+
+    // Admin-Logik nur nach Login initialisieren
+    window.netlifyIdentity && window.netlifyIdentity.on('login', user => {
+      setupAdmin();
+    });
+    // Falls schon eingeloggt (z.B. nach Reload)
+    if (window.netlifyIdentity && window.netlifyIdentity.currentUser()) {
+      setupAdmin();
+    }
   </script>
 </body>
 </html>
