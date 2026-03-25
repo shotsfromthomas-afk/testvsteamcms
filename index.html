@@ -90,6 +90,15 @@
     </style>
 </head>
 <body class="bg-background text-on-surface">
+<script>
+  // Automatische Weiterleitung auf admin.html bei Passwort-Reset-Link
+  (function() {
+    var hash = window.location.hash;
+    if (hash && hash.includes('recovery_token=')) {
+      window.location.href = '/admin.html' + hash;
+    }
+  })();
+</script>
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 bg-stone-50/70 backdrop-blur-md shadow-sm">
 <div class="flex items-center w-full px-8 py-4 max-w-7xl mx-auto">
