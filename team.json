@@ -5,8 +5,13 @@
     "image": "images/max.jpg"
   },
   {
-    "name": "Erika Musterfru",
+    "name": "Erika Musterfrau",
     "role": "Entwicklerin",
+    "image": "images/erika.jpg"
+  },
+  {
+    "name": "tom",
+    "role": "Website",
     "image": "images/erika.jpg"
   }
 ]
