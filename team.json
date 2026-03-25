@@ -1,27 +1,7 @@
 [
   {
-    "name": "Max Mustermann",
-    "role": "Projektleiter",
-    "image": "images/max.jpg"
-  },
-  {
-    "name": "Erika Musterfrau",
-    "role": "Entwicklerin",
-    "image": "images/erika.jpg"
-  },
-  {
-    "name": "tom",
-    "role": "Website",
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy0KlX0HFKywD2AVCwvlTET1WK2lITYAB8sQ&s"
-  },
-  {
-    "name": "Silvan",
+    "name": "Jonas Lemmenmeier",
     "role": "Berater",
-    "image": "images/1774432140596-o1b5ht.png"
-  },
-  {
-    "name": "Silvan",
-    "role": "Berater",
-    "image": "images/1774432372130-ebn41d.png"
+    "image": "images/1774432544187-d70s4j.jpeg"
   }
 ]
