@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="light" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#4f6647",
+              "surface-tint": "#4e6546",
+              "on-tertiary-fixed": "#380d00",
+              "on-tertiary-fixed-variant": "#6f3722",
+              "on-primary-fixed": "#0c2008",
+              "on-surface": "#1b1c18",
+              "surface-bright": "#fbf9f2",
+              "tertiary": "#703823",
+              "inverse-surface": "#30312c",
+              "secondary-fixed": "#ffdcbd",
+              "error": "#ba1a1a",
+              "outline": "#74796f",
+              "surface-dim": "#dcdad3",
+              "surface-variant": "#e4e2dc",
+              "primary": "#384e31",
+              "secondary-container": "#fdcb9b",
+              "on-secondary-fixed": "#2c1600",
+              "tertiary-fixed-dim": "#ffb59b",
+              "secondary-fixed-dim": "#eebd8e",
+              "on-error": "#ffffff",
+              "surface-container": "#f0eee7",
+              "primary-fixed-dim": "#b4cea8",
+              "surface-container-low": "#f6f4ec",
+              "on-tertiary-container": "#ffd0c0",
+              "on-surface-variant": "#434840",
+              "surface": "#fbf9f2",
+              "surface-container-highest": "#e4e2dc",
+              "inverse-primary": "#b4cea8",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#364c30",
+              "surface-container-high": "#eae8e1",
+              "tertiary-fixed": "#ffdbcf",
+              "background": "#fbf9f2",
+              "tertiary-container": "#8d4f38",
+              "secondary": "#7c5730",
+              "surface-container-lowest": "#ffffff",
+              "on-background": "#1b1c18",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed-variant": "#61401b",
+              "primary-fixed": "#d0eac3",
+              "on-primary-container": "#c8e3bc",
+              "inverse-on-surface": "#f3f1ea",
+              "on-primary": "#ffffff",
+              "outline-variant": "#c4c8bd",
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-secondary-container": "#79542d"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif", "serif"],
+              "body": ["Manrope", "sans-serif"],
+              "label": ["Manrope", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .font-serif { font-family: 'Noto Serif', serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-stone-50/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm dark:shadow-none transition-colors duration-300">
+<div class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+<div class="font-serif italic text-2xl text-emerald-900 dark:text-emerald-500">
+                Rehkitzrettung
+            </div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-sans text-sm tracking-wide uppercase text-emerald-900 dark:text-emerald-400 font-bold border-b-2 border-emerald-800 pb-1 hover:text-emerald-700 transition-colors duration-300" href="#">Mission</a>
+<a class="font-sans text-sm tracking-wide uppercase text-stone-600 dark:text-stone-400 hover:text-emerald-800 hover:text-emerald-700 transition-colors duration-300" href="#">Team</a>
+<a class="font-sans text-sm tracking-wide uppercase text-stone-600 dark:text-stone-400 hover:text-emerald-800 hover:text-emerald-700 transition-colors duration-300" href="#">Sponsors</a>
+<a class="font-sans text-sm tracking-wide uppercase text-stone-600 dark:text-stone-400 hover:text-emerald-800 hover:text-emerald-700 transition-colors duration-300" href="#">Membership</a>
+<a class="font-sans text-sm tracking-wide uppercase text-stone-600 dark:text-stone-400 hover:text-emerald-800 hover:text-emerald-700 transition-colors duration-300" href="#">Technology</a>
+</div>
+<div class="flex items-center">
+<button class="bg-primary text-on-primary px-8 py-2.5 rounded-full font-label text-sm font-bold uppercase tracking-widest hover:bg-primary-container transition-transform active:scale-95">
+                    Donate
+                </button>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent z-10"></div>
+<img alt="Fawn in high grass" class="w-full h-full object-cover" data-alt="A young fawn resting in a lush green meadow morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2e8Xm1tegF4x-5FzAMG7c430nJ-MAz_Pn0dbJ7WOw6XySlvbW9E-QhrLfxSv8jay15JhATKL_7Doo3k-Q0S9ImvgRZd-7F8c_D0am9f6iOawuBZGuguB6C-ydho_gbID0gSMTNvPfqvAuYUvdKfihfwgcvGDa-DHCQeifFLF6OPssJ_ibmkyBDaS7tkT8kEA5JE2eDrPZBdnL6njosPniDxZ9Nx5J2RzXjZTt6ir8gSAR5-R_yRQkL4JnT066VMg1I231okgCNfY"/>
+</div>
+<div class="relative z-20 max-w-7xl mx-auto px-8 w-full">
+<div class="max-w-2xl">
+<span class="inline-block py-1 px-4 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold uppercase tracking-widest mb-6">
+                        Natur- und Tierschutz
+                    </span>
+<h1 class="font-headline text-6xl md:text-8xl text-primary leading-tight -tracking-[0.02em] mb-8">
+                        Gemeinsam für den <span class="italic">Schutz</span> der Rehkitze
+                    </h1>
+<p class="font-body text-xl text-on-surface-variant leading-relaxed mb-10 max-w-lg">
+                        Wir nutzen modernste Drohnentechnologie, um Rehkitze vor dem Mähtod zu bewahren. Werden Sie Teil unserer Mission im Herzen der Natur.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="bg-primary text-on-primary px-10 py-5 rounded-full font-label text-sm font-bold uppercase tracking-widest shadow-lg hover:bg-primary-container transition-all">
+                            Jetzt unterstützen
+                        </button>
+<button class="bg-surface-container-high text-on-secondary-container px-10 py-5 rounded-full font-label text-sm font-bold uppercase tracking-widest hover:bg-surface-container-highest transition-all">
+                            Mehr erfahren
+                        </button>
+</div>
+</div>
+</div>
+<div class="absolute bottom-12 right-12 z-20 hidden lg:flex items-center gap-4 bg-surface/70 backdrop-blur-md p-4 rounded-xl border border-outline-variant/20">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined" data-weight="fill">volunteer_activism</span>
+</div>
+<div>
+<div class="text-xs font-label uppercase font-bold tracking-tighter opacity-60 text-on-surface">Aktuelle Saison</div>
+<div class="text-sm font-bold text-primary">243 Kitze gerettet</div>
+</div>
+</div>
+</section>
+<!-- Mission Section (Asymmetric Editorial Layout) -->
+<section class="py-32 px-8 max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16 items-center">
+<div class="md:col-span-5 order-2 md:order-1">
+<div class="relative">
+<img alt="Drone Pilot in Forest" class="rounded-tl-xl rounded-br-xl w-full h-[600px] object-cover" data-alt="Wildlife rescue drone pilot operating thermal imaging equipment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk3Sz4MBfta5WlTAD5r1MG7WePstGdXJOoKE15jtsRnvMQGm2gI_Nls_3c4WcdSKCP4rbNHClciwW5EyG9dhRJdFMUYLfftP-j68cPIwpxWWIBMaIykwlShvP1BLiPMtwRS0BAHte6yqeGpix6BNE7nX27l4MVomPTni-2B-xTPRGn_rJjZRAVUXnnHmyZsFoXQgGdJPRg-PG7l3hq5snuPZR15Zz_FAQQWvq5H-H80IBniLOzB88HFXYInK4yLiI_uwdTyB0xQwc"/>
+<div class="absolute -bottom-8 -right-8 w-64 h-64 bg-secondary-container/30 rounded-full blur-3xl -z-10"></div>
+</div>
+</div>
+<div class="md:col-span-7 order-1 md:order-2">
+<div class="space-y-8">
+<h2 class="font-headline text-5xl text-primary leading-tight">Unsere Mission</h2>
+<div class="h-1 w-20 bg-tertiary rounded-full"></div>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed">
+                            Jedes Jahr im Frühling beginnt für die Landwirte die Mahd der Wiesen. Zur gleichen Zeit bringen Rehe ihre Kitze zur Welt. In den ersten Lebenswochen haben die Kitze keinen Fluchtinstinkt – sie ducken sich tief ins hohe Gras.
+                        </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
+<div class="p-8 bg-surface-container-low rounded-xl transition-all hover:bg-surface-container">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4">precision_manufacturing</span>
+<h3 class="font-headline text-xl text-primary mb-2">Technologie</h3>
+<p class="text-sm text-on-surface-variant">Einsatz von Wärmebildkameras und High-End-Drohnen zur präzisen Ortung vor dem ersten Schnitt.</p>
+</div>
+<div class="p-8 bg-surface-container-low rounded-xl transition-all hover:bg-surface-container">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">handshake</span>
+<h3 class="font-headline text-xl text-primary mb-2">Kooperation</h3>
+<p class="text-sm text-on-surface-variant">Enge Zusammenarbeit mit Landwirten und Jägern für einen reibungslosen Ablauf der Rettungseinsätze.</p>
+</div>
+</div>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed">
+                            Unser Ziel ist die flächendeckende Absicherung von Grünflächen während der Brut- und Setzzeit, um unnötiges Leid zu verhindern und die Biodiversität in unseren heimischen Wäldern zu fördern.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Stories & Impact -->
+<section class="bg-surface-container py-32 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="mb-16 text-center max-w-2xl mx-auto">
+<h2 class="font-headline text-4xl text-primary mb-4">Engagement in Bildern</h2>
+<p class="font-body text-on-surface-variant">Einblicke in unsere tägliche Arbeit und die Wunder der Natur, die wir gemeinsam bewahren.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[800px]">
+<div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-xl bg-surface-container-lowest">
+<img alt="Forest landscape" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Wide misty forest landscape at dawn" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2dMPVD3yjzEZrEMsq6ODuSmRACZgHKk8Kh8r8DJEaFcAdetU-BExVGTOTogAfUHzTa21bUrdrHAidGyCTMJBo-jZT3xy4kF125jA7MfXyO_tpKwkAt4lBu6xzVKrjhgSZJ0U_5khptxWV_0N82UwtwQkVv7LjiLxs-CRqGj2ItFwgBuqhBHzobggOHxjnuoLlC2Ei9CeGgfKEMH8uiTYVRoxBLbXs52npuvDwvdGf_wFZ2yknwrE60Fv7ajFc1ud4dXlfs3INMBM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity">
+<h4 class="font-headline text-2xl text-on-primary">Morgendliche Stille</h4>
+<p class="text-on-primary-container text-sm">Der ideale Zeitpunkt für unsere Rettungsflüge.</p>
+</div>
+</div>
+<div class="md:col-span-2 relative group overflow-hidden rounded-xl bg-surface-container-lowest">
+<img alt="Meadow nature" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Lush green wildflower meadow in summer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIu3s1v6vzTHvdqqcpS8628XsX6_yiry9bv4Zs5xqFjMR0xJL6K7mtT2pNFF-HEmLSDhFQ0F6PWA1EkIDasIKDoyd7nL_7jD4nziQ0yQpDt-sz_zilCdVoYHdYyhj8PMv9C9JaB92F7uU5huj_iDW0y-RyQZspH3xC3Bv7UuqXV-zKqDA9WduYo5opNPNvGqbJuRk6g1l87uU3tDgqJObAkwKYFTi_w8D8Ad2ZiTRPqRryNVxpF8WMcdklK2zPVHcMPc8ShCqXOmI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-8 opacity-0 group-hover:opacity-100 transition-opacity">
+<h4 class="font-headline text-xl text-on-primary">Sicherer Lebensraum</h4>
+</div>
+</div>
+<div class="relative group overflow-hidden rounded-xl bg-surface-container-lowest">
+<img alt="Nature detail" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close up of sun rays through tree leaves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU7L5R3sPlWzvogRRMn0g4R-ebz3dDNBYHc1eyM6XQMEbCZdXIUUsvWenvyKPyLNjvjA4EueBhCBI5_tvUmcufnCXQ981KZEE4ip-2cUuiGOMUaPRbWUyIgtvEgO1iJ9Uuo4nkUF_mrOI7ABSmIC9GOrSA1BnBq7mDYffAA-zUqYdZX207hQvAjsqzVepHdKZosGW0bXIHibTCIoHizkTKveJSnYICisjBTL8yldTtbL--1-FRy3q07h2W9GIUnvRwAUDxUy-1JnM"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-primary/40 transition-colors"></div>
+</div>
+<div class="bg-primary text-on-primary p-8 rounded-xl flex flex-col justify-between">
+<span class="material-symbols-outlined text-4xl">eco</span>
+<div>
+<div class="text-4xl font-headline mb-2">100%</div>
+<p class="text-sm font-label uppercase tracking-widest opacity-80">Ehrenamtlich organisiert</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Nature-In-Focus Signature Component -->
+<section class="py-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8">
+<div class="bg-surface-container-highest rounded-xl p-12 md:p-24 relative overflow-hidden flex flex-col md:flex-row items-center gap-16">
+<div class="md:w-1/2 z-10">
+<h2 class="font-headline text-5xl text-primary mb-8 -ml-1">Retten Sie <span class="italic">Leben</span>.</h2>
+<p class="font-body text-lg text-on-surface-variant leading-relaxed mb-10">
+                            Ihre Spende ermöglicht uns den Kauf neuer Drohnen-Akkus, die Ausbildung weiterer Piloten und den Ausbau unseres Netzwerks. Jeder Euro kommt direkt dem Schutz der Wildtiere zugute.
+                        </p>
+<button class="inline-flex items-center gap-4 bg-tertiary text-on-tertiary px-10 py-5 rounded-full font-label text-sm font-bold uppercase tracking-widest shadow-xl hover:bg-tertiary-container transition-all group">
+                            Gleich hier spenden
+                            <span class="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="md:w-1/2 relative">
+<div class="aspect-square relative z-10">
+<img alt="Nature Detail" class="w-full h-full object-cover rounded-tl-[100px] rounded-br-[100px] shadow-2xl" data-alt="Artistic close up of forest moss and soft light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLHsL-SeOg5hnvb_zjqkzN4jsY_m6W29TqccR7-kFyAyo1l2ZFVXEhl8_RuqG-z_wTYhFTdQY6MuLERgXkOuUnwRrphVWT9C1wKrd9EqCPub7Q61G-pJhY5oMH-fcGfio_FrsAfnFdwt926oXWSDZryJtjp8TMaZfbu-zWSLbBGtJUVFSKl6CD4_Af8s7x9WxeBj3FN3x18_uRyiIS9AnCMx8Pg1l1Mr823ohjJObFp4pyx-qWnQ33ZflYs3Pbq_fiR_bcHU0IBBc"/>
+</div>
+<div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-2xl"></div>
+<div class="absolute -bottom-10 -right-10 w-60 h-60 bg-secondary/10 rounded-full blur-3xl"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-[2rem] mt-20 bg-stone-100 dark:bg-stone-950">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-16 max-w-7xl mx-auto">
+<div class="md:col-span-1">
+<div class="font-serif text-xl text-emerald-900 dark:text-emerald-500 mb-6">
+                    Rehkitzrettung
+                </div>
+<p class="font-sans text-stone-700 text-sm leading-relaxed mb-8">
+                    Verein zur Rettung von Wildtieren und Förderung des ökologischen Bewusstseins in unseren Regionen.
+                </p>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary cursor-pointer hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-xl">share</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary cursor-pointer hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined text-xl">favorite</span>
+</div>
+</div>
+</div>
+<div>
+<h4 class="font-sans font-bold text-xs uppercase text-emerald-900 mb-6 tracking-widest">Navigation</h4>
+<ul class="space-y-4">
+<li><a class="text-stone-500 hover:underline decoration-emerald-500 underline-offset-4 text-sm transition-all" href="#">Startseite</a></li>
+<li><a class="text-stone-500 hover:underline decoration-emerald-500 underline-offset-4 text-sm transition-all" href="#">Unsere Mission</a></li>
+<li><a class="text-stone-500 hover:underline decoration-emerald-500 underline-offset-4 text-sm transition-all" href="#">Team &amp; Piloten</a></li>
+<li><a class="text-stone-500 hover:underline decoration-emerald-500 underline-offset-4 text-sm transition-all" href="#">Unterstützer</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-sans font-bold text-xs uppercase text-emerald-900 mb-6 tracking-widest">Resources</h4>
+<ul class="space-y-4">
+<li><a class="text-stone-500 hover:underline decoration-emerald-500 underline-offset-4 text-sm transition-all" href="#">Contact</a></li>
+<li><a class="text-stone-500 hover:underline decoration-emerald-500 underline-offset-4 text-sm transition-all" href="#">Impressum</a></li>
+<li><a class="text-stone-500 hover:underline decoration-emerald-500 underline-offset-4 text-sm transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-stone-500 hover:underline decoration-emerald-500 underline-offset-4 text-sm transition-all" href="#">Newsletter</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-sans font-bold text-xs uppercase text-emerald-900 mb-6 tracking-widest">Bleiben Sie verbunden</h4>
+<div class="relative bg-surface p-1 rounded-full flex items-center shadow-inner">
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full px-4" placeholder="Email" type="email"/>
+<button class="bg-primary text-on-primary p-2 rounded-full flex items-center justify-center transition-transform hover:scale-105 active:scale-95">
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-12 py-8 border-t border-stone-200/50 flex flex-col md:flex-row justify-between items-center text-xs text-stone-500 tracking-wide uppercase">
+<div>© 2024 Rehkitzrettung Association. Protecting nature's heartbeat.</div>
+<div class="mt-4 md:mt-0 flex gap-6">
+<span>Handgemacht für die Natur</span>
+<span>Mit Liebe &amp; Technik</span>
+</div>
+</div>
+</footer>
+</body></html>

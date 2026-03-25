@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="light" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;0,700;1,400&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error": "#ba1a1a",
+              "outline": "#74796f",
+              "secondary-fixed": "#ffdcbd",
+              "inverse-surface": "#30312c",
+              "surface-bright": "#fbf9f2",
+              "tertiary": "#703823",
+              "on-tertiary-fixed-variant": "#6f3722",
+              "on-primary-fixed": "#0c2008",
+              "on-surface": "#1b1c18",
+              "surface-tint": "#4e6546",
+              "on-tertiary-fixed": "#380d00",
+              "primary-container": "#4f6647",
+              "tertiary-fixed-dim": "#ffb59b",
+              "secondary-fixed-dim": "#eebd8e",
+              "on-secondary-fixed": "#2c1600",
+              "secondary-container": "#fdcb9b",
+              "primary": "#384e31",
+              "surface-variant": "#e4e2dc",
+              "surface-dim": "#dcdad3",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#364c30",
+              "inverse-primary": "#b4cea8",
+              "surface-container-highest": "#e4e2dc",
+              "surface": "#fbf9f2",
+              "on-tertiary-container": "#ffd0c0",
+              "on-surface-variant": "#434840",
+              "surface-container-low": "#f6f4ec",
+              "primary-fixed-dim": "#b4cea8",
+              "surface-container": "#f0eee7",
+              "on-error": "#ffffff",
+              "on-secondary-container": "#79542d",
+              "outline-variant": "#c4c8bd",
+              "on-primary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "inverse-on-surface": "#f3f1ea",
+              "primary-fixed": "#d0eac3",
+              "on-primary-container": "#c8e3bc",
+              "surface-container-lowest": "#ffffff",
+              "on-background": "#1b1c18",
+              "on-secondary-fixed-variant": "#61401b",
+              "on-error-container": "#93000a",
+              "tertiary-container": "#8d4f38",
+              "secondary": "#7c5730",
+              "tertiary-fixed": "#ffdbcf",
+              "background": "#fbf9f2",
+              "surface-container-high": "#eae8e1"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(251, 249, 242, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-stone-50/70 backdrop-blur-md shadow-sm">
+<div class="flex items-center w-full px-8 py-4 max-w-7xl mx-auto">
+  <a href="index.html" class="font-serif italic text-2xl text-emerald-900">Rehkitzrettung</a>
+  <div class="flex-1 flex justify-end">
+    <div class="flex items-center space-x-8">
+      <a class="bg-primary text-on-primary px-8 py-2.5 rounded-full font-bold tracking-tight hover:bg-primary-container transition-all active:scale-95" href="Landwirte.html">Landwirte</a>
+      <button class="hidden md:inline-flex bg-primary text-on-primary px-8 py-2.5 rounded-full font-bold tracking-tight hover:bg-primary-container transition-all active:scale-95">Donate</button>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Mobile Navigation -->
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="max-w-7xl mx-auto px-8 pt-20 pb-12">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div>
+<span class="font-label text-xs tracking-widest uppercase text-secondary font-bold mb-4 block">Zusammenarbeit</span>
+<h1 class="font-headline text-5xl md:text-6xl font-bold tracking-tight text-primary leading-tight mb-6">
+                    Flächen zum <br/><span class="italic font-normal">Mähen</span> anmelden
+                </h1>
+<p class="text-lg text-on-surface-variant max-w-md leading-relaxed">
+                    Schützen Sie das Leben auf Ihren Feldern. Gemeinsam koordinieren wir die Suche vor dem Mähen – schnell, unkompliziert und kostenlos.
+                </p>
+</div>
+<div class="relative h-[400px] rounded-xl overflow-hidden shadow-2xl">
+<img alt="Rehkitz im Gras" class="w-full h-full object-cover" src="https://img.oastatic.com/img2/66404780/420x237r/variant.webp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+</div>
+</section>
+<!-- How it Works Section -->
+<section class="py-24 max-w-7xl mx-auto px-8">
+<h2 class="font-headline text-4xl font-bold text-center text-primary mb-20 italic">So funktioniert der Schutz</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="text-center group">
+<div class="w-20 h-20 bg-surface-container rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">edit_document</span>
+</div>
+<h4 class="font-headline text-lg font-bold mb-3">1. Online Anmelden</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Sie melden uns Ihre Flächen mindestens 24h vor dem geplanten Mähtermin.</p>
+</div>
+<div class="text-center group">
+<div class="w-20 h-20 bg-surface-container rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">phone_in_talk</span>
+</div>
+<h4 class="font-headline text-lg font-bold mb-3">2. Bestätigung</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Nach Ihrer Anmeldung erfolgt ein telefonischer Rückruf, um alle Details und den Termin final zu bestätigen.</p>
+</div>
+<div class="text-center group">
+<div class="w-20 h-20 bg-surface-container rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">precision_manufacturing</span>
+</div>
+<h4 class="font-headline text-lg font-bold mb-3">3. Drohnensuche</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Unser Team überfliegt am frühen Morgen die Wiese mit einer Wärmebildkamera.</p>
+</div>
+<div class="text-center group">
+<div class="w-20 h-20 bg-surface-container rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-3xl text-primary">grass</span>
+</div>
+<h4 class="font-headline text-lg font-bold mb-3">4. Sicheres Mähen</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Kitze werden sicher gesichert, Sie können ohne Sorge mit dem Mähen beginnen.</p>
+</div>
+</div>
+</section>
+<!-- Registration Form Section -->
+<section class="bg-surface-container-low py-20 px-8">
+<div class="max-w-4xl mx-auto">
+<div class="bg-surface-container-lowest rounded-xl p-8 md:p-12 shadow-sm border border-outline-variant/10">
+<!-- Progress Indicator -->
+
+<form name="contact" method="POST" action="/Bestätigung.html" netlify="true" netlify-honeypot="bot-field" class="space-y-12">
+  <input type="hidden" name="bot-field" />
+  <input type="hidden" name="form-name" value="contact" />
+<!-- Step 1: Contact -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="col-span-full border-b border-outline-variant/30 pb-4">
+<h3 class="font-headline text-2xl font-bold text-primary mb-2">Kontaktdaten &amp; Betrieb</h3>
+<p class="text-on-surface-variant text-sm">Bitte geben Sie Ihre Daten an, damit wir Sie für die Abstimmung erreichen können.</p>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label text-sm font-semibold text-on-surface-variant">Name / Betrieb</label>
+<input class="bg-surface-container-lowest border-none border-b-2 border-outline-variant focus:border-primary focus:ring-0 transition-colors py-3 px-0" placeholder="z.B. Bio-Hof Müller" type="text" name="betrieb" required />
+</div>
+<div class="flex flex-col gap-2 bg-primary/5 p-4 rounded-lg border border-primary/10">
+<label class="font-label text-sm font-bold text-primary">Telefonnummer (für Rückruf)</label>
+<input class="bg-transparent border-none border-b-2 border-primary/30 focus:border-primary focus:ring-0 transition-colors py-3 px-0 text-lg font-semibold" placeholder="+49 123 456789" type="tel" name="telefon" required />
+</div>
+<div class="flex flex-col gap-2 col-span-full">
+<label class="font-label text-sm font-semibold text-on-surface-variant">E-Mail Adresse</label>
+<input class="bg-surface-container-lowest border-none border-b-2 border-outline-variant focus:border-primary focus:ring-0 transition-colors py-3 px-0" placeholder="beispiel@hof.de" type="email" name="email" required />
+</div>
+</div>
+<!-- Step 2: Location -->
+<div class="grid grid-cols-1 gap-8 pt-8">
+<div class="border-b border-outline-variant/30 pb-4">
+<h3 class="font-headline text-2xl font-bold text-primary mb-2">Lage der Fläche</h3>
+<p class="text-on-surface-variant text-sm">Wo befindet sich die zu mähende Fläche?</p>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label text-sm font-semibold text-on-surface-variant">Ort des Mähens (Adresse oder Schlagbezeichnung)</label>
+<input class="bg-surface-container-lowest border-none border-b-2 border-outline-variant focus:border-primary focus:ring-0 transition-colors py-3 px-0" placeholder="z.B. Gemarkung Sonnental, Schlag 4" type="text" name="ort" required />
+</div>
+</div>
+<!-- Step 3: Scheduling -->
+<div class="grid grid-cols-1 gap-8 pt-8">
+<div class="border-b border-outline-variant/30 pb-4">
+<h3 class="font-headline text-2xl font-bold text-primary mb-2">Zeitplanung</h3>
+<p class="text-on-surface-variant text-sm">Wann planen Sie zu mähen? Der Überflug mit der Drohne sollte möglichst früh am Mäh-Tag stattfinden, das Mähen kann aber auch später erfolgen.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-2">
+<label class="font-label text-sm font-semibold text-on-surface-variant">Geplantes Mähdatum</label>
+<input class="bg-surface-container-lowest border-none border-b-2 border-outline-variant focus:border-primary focus:ring-0 transition-colors py-3 px-0" type="date" name="maehdatum" required />
+</div>
+<div class="bg-primary-container/10 p-4 rounded-xl flex items-start gap-3 border border-primary/10">
+<span class="material-symbols-outlined text-primary mt-1">light_mode</span>
+<p class="text-sm text-primary leading-snug">
+<strong>Hinweis:</strong> Bitte wählen Sie die gewünschte Uhrzeit für den Drohnenflug am Mäh-Tag. Das Mähen kann im Anschluss flexibel erfolgen.
+                                </p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-4">
+  <div class="flex flex-col gap-2">
+    <label class="font-label text-sm font-semibold text-on-surface-variant">Geplante Uhrzeit für das Mähen</label>
+    <input class="bg-surface-container-lowest border-none border-b-2 border-outline-variant focus:border-primary focus:ring-0 transition-colors py-3 px-0" type="time" name="maehzeit" required />
+  </div>
+</div>
+</div>
+<!-- Step 4: Finalize -->
+<div class="grid grid-cols-1 gap-8 pt-8">
+<div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-2">Abschluss</h3>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label text-sm font-semibold text-on-surface-variant">Flächengröße (optional in ha)</label>
+<input class="bg-surface-container-lowest border-none border-b-2 border-outline-variant focus:border-primary focus:ring-0 transition-colors py-3 px-0" placeholder="z.B. 4.5" type="number" name="flaeche" step="0.1" />
+</div>
+<div class="pt-8">
+<button class="w-full bg-primary text-on-primary py-5 rounded-full font-headline text-xl font-bold shadow-xl hover:bg-primary-container transition-all flex items-center justify-center gap-3">
+                                Anfrage senden
+                                <span class="material-symbols-outlined">send</span>
+</button>
+<div class="flex items-center justify-center gap-2 mt-6 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span class="text-xs">Ihre Daten werden vertraulich behandelt und nur zur Koordination genutzt.</span>
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-[2rem] mt-20 bg-primary-container">
+<div class="flex flex-col items-center px-12 py-16 max-w-7xl mx-auto">
+  <div class="font-serif text-xl text-on-primary-container mb-2">Rehkitzrettung</div>
+  <p class="font-sans text-on-primary-container text-sm leading-relaxed mb-4">© 2024 Rehkitzrettung Association. Protecting nature's heartbeat.</p>
+  <div class="flex space-x-8">
+    <a class="text-on-primary-container hover:underline decoration-emerald-500 underline-offset-4 transition-all" href="Landwirte.html">Landwirte</a>
+    <a class="text-on-primary-container hover:underline decoration-emerald-500 underline-offset-4 transition-all" href="#">Impressum</a>
+    <a class="text-on-primary-container hover:underline decoration-emerald-500 underline-offset-4 transition-all" href="#">Datenschutzerklärung</a>
+  </div>
+</div>
+</footer>
+</body></html>

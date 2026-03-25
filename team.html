@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html class="light" lang="de"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#4f6647",
+              "surface-tint": "#4e6546",
+              "on-tertiary-fixed": "#380d00",
+              "on-tertiary-fixed-variant": "#6f3722",
+              "on-primary-fixed": "#0c2008",
+              "on-surface": "#1b1c18",
+              "surface-bright": "#fbf9f2",
+              "tertiary": "#703823",
+              "inverse-surface": "#30312c",
+              "secondary-fixed": "#ffdcbd",
+              "error": "#ba1a1a",
+              "outline": "#74796f",
+              "surface-dim": "#dcdad3",
+              "surface-variant": "#e4e2dc",
+              "primary": "#384e31",
+              "secondary-container": "#fdcb9b",
+              "on-secondary-fixed": "#2c1600",
+              "tertiary-fixed-dim": "#ffb59b",
+              "secondary-fixed-dim": "#eebd8e",
+              "on-error": "#ffffff",
+              "surface-container": "#f0eee7",
+              "primary-fixed-dim": "#b4cea8",
+              "surface-container-low": "#f6f4ec",
+              "on-tertiary-container": "#ffd0c0",
+              "on-surface-variant": "#434840",
+              "surface": "#fbf9f2",
+              "surface-container-highest": "#e4e2dc",
+              "inverse-primary": "#b4cea8",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#364c30",
+              "surface-container-high": "#eae8e1",
+              "tertiary-fixed": "#ffdbcf",
+              "background": "#fbf9f2",
+              "tertiary-container": "#8d4f38",
+              "secondary": "#7c5730",
+              "surface-container-lowest": "#ffffff",
+              "on-background": "#1b1c18",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed-variant": "#61401b",
+              "primary-fixed": "#d0eac3",
+              "on-primary-container": "#c8e3bc",
+              "inverse-on-surface": "#f3f1ea",
+              "on-primary": "#ffffff",
+              "outline-variant": "#c4c8bd",
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-secondary-container": "#79542d"
+            },
+            fontFamily: {
+              "headline": ["Noto Serif"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Manrope', sans-serif; }
+      h1, h2, h3 { font-family: 'Noto Serif', serif; }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-primary transition-colors duration-300">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-stone-50/70 dark:bg-stone-900/70 backdrop-blur-md shadow-sm dark:shadow-none">
+<nav class="flex justify-between items-center w-full px-8 py-4 max-w-7xl mx-auto">
+<div class="font-serif italic text-2xl text-emerald-900 dark:text-emerald-500">Rehkitzrettung</div>
+<ul class="hidden md:flex items-center gap-8 font-sans text-sm tracking-wide uppercase">
+<li><a class="text-stone-600 dark:text-stone-400 hover:text-emerald-800 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors duration-300" href="#">Mission</a></li>
+<li><a class="text-emerald-900 dark:text-emerald-400 font-bold border-b-2 border-emerald-800 pb-1" href="#">Team</a></li>
+<li><a class="text-stone-600 dark:text-stone-400 hover:text-emerald-800 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors duration-300" href="#">Sponsors</a></li>
+<li><a class="text-stone-600 dark:text-stone-400 hover:text-emerald-800 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors duration-300" href="#">Membership</a></li>
+<li><a class="text-stone-600 dark:text-stone-400 hover:text-emerald-800 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors duration-300" href="#">Technology</a></li>
+</ul>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label text-sm uppercase tracking-wider font-bold hover:bg-primary-container transition-all active:opacity-80 active:scale-95">
+                Donate
+            </button>
+</nav>
+</header>
+<main class="pt-32">
+<!-- Hero Section / Wer wir sind -->
+<section class="max-w-7xl mx-auto px-8 mb-20 md:mb-32">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<span class="inline-block font-label text-sm uppercase tracking-[0.2em] text-secondary mb-6">Unsere Geschichte</span>
+<h1 class="text-5xl md:text-7xl font-headline text-on-surface leading-tight tracking-tight mb-8">Wer wir sind.</h1>
+<p class="text-xl md:text-2xl font-body leading-relaxed text-on-surface-variant max-w-2xl mb-12">
+                        Gegründet aus der tiefen Verbundenheit zur Natur, widmen wir uns dem Schutz der Kleinsten. Wenn im Frühjahr die Wiesen gemäht werden, beginnt für uns der Wettlauf gegen die Zeit.
+                    </p>
+<div class="flex flex-wrap gap-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary scale-125" data-icon="shield_with_heart">shield_with_heart</span>
+<span class="font-label text-xs uppercase tracking-widest font-bold">1.200+ Kitze gerettet</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary scale-125" data-icon="groups">groups</span>
+<span class="font-label text-xs uppercase tracking-widest font-bold">85 Aktive Helfer</span>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="rounded-xl overflow-hidden aspect-[4/5] shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="Baby deer fawn resting safely in tall green grass" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuqT5m27kwuFEHMAdUF6K_mCkrcyJLu7h4umA2ShRmR5uhiRcgKA-pKjpgMtJB00dR6UuROzN_t-sWoO9TTga6-ho1c8EwCmfJxPsO7gOWiagI2UV36ShEY9o-MJ1FB-VHl5exAcxJxJTJ_OqATWyQTbx5hQk9l5dfriYCjEt0U_eTNIKSW8mA0zbPBTJFgDIVEghpeRuu7T0IUlV-_gAh1Ig7ZeYu6fpUXvxirYx-JgcUdKQVYa5er_jo3GUvT94Bk9wBmC7oxug"/>
+</div>
+<div class="absolute -bottom-8 -left-8 p-8 bg-surface-container-lowest rounded-xl shadow-lg hidden md:block max-w-[240px]">
+<p class="text-sm font-body italic italic-serif leading-relaxed text-on-surface-variant">
+                            "Jedes Leben zählt. Unsere Mission ist es, die Stille des Morgens zu bewahren."
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Werte und Vision: Bento Grid Pattern -->
+<section class="bg-surface-container py-24 md:py-32">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-16">
+<h2 class="text-4xl md:text-5xl font-headline text-on-surface mb-4">Werte und Vision</h2>
+<div class="h-1 w-24 bg-primary rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Large Feature Card -->
+<div class="md:col-span-2 bg-surface-container-lowest p-10 rounded-xl flex flex-col justify-between group overflow-hidden relative">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="eco" style="font-variation-settings: 'FILL' 1;">eco</span>
+<h3 class="text-3xl font-headline mb-4">Ehrfurcht vor dem Leben</h3>
+<p class="text-lg text-on-surface-variant max-w-lg leading-relaxed">
+                                Unser Handeln ist von tiefem Respekt gegenüber der Natur geleitet. Wir sehen uns nicht als Bezwinger, sondern als Hüter eines empfindlichen Gleichgewichts.
+                            </p>
+</div>
+<div class="absolute bottom-0 right-0 opacity-10 scale-150 transform translate-x-1/4 translate-y-1/4">
+<span class="material-symbols-outlined text-[200px]" data-icon="forest">forest</span>
+</div>
+</div>
+<!-- Small Accent Card -->
+<div class="bg-primary text-on-primary p-10 rounded-xl flex flex-col justify-center">
+<h3 class="text-2xl font-headline mb-4">Vision 2030</h3>
+<p class="text-on-primary/80 font-body leading-relaxed">
+                            Ein flächendeckendes Netzwerk an Drohnen-Piloten, das keinen Quadratmeter ungeschützt lässt.
+                        </p>
+</div>
+<!-- Content Card -->
+<div class="bg-surface-container-low p-10 rounded-xl border border-outline-variant/20">
+<span class="material-symbols-outlined text-secondary mb-4" data-icon="visibility">visibility</span>
+<h3 class="text-xl font-headline mb-3">Transparenz</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed font-body">
+                            Jeder gespendete Euro fließt direkt in die Technologie und die Ausbildung unserer ehrenamtlichen Retter.
+                        </p>
+</div>
+<!-- Content Card -->
+<div class="bg-surface-container-low p-10 rounded-xl border border-outline-variant/20">
+<span class="material-symbols-outlined text-secondary mb-4" data-icon="handshake">handshake</span>
+<h3 class="text-xl font-headline mb-3">Zusammenhalt</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed font-body">
+                            Landwirte, Jäger und Naturschützer arbeiten bei uns Hand in Hand für das Wohl der Tiere.
+                        </p>
+</div>
+<!-- Content Card -->
+<div class="bg-surface-container-low p-10 rounded-xl border border-outline-variant/20">
+<span class="material-symbols-outlined text-secondary mb-4" data-icon="precision_manufacturing">precision_manufacturing</span>
+<h3 class="text-xl font-headline mb-3">Innovation</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed font-body">
+                            Wir nutzen modernste Wärmebildtechnik, um Kitze in ihrem natürlichen Versteck aufzuspüren.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Unser Team -->
+<section class="py-24 md:py-32 max-w-7xl mx-auto px-8">
+<div class="text-center mb-20">
+<span class="font-label text-sm uppercase tracking-[0.2em] text-secondary mb-4 block">Die Köpfe dahinter</span>
+<h2 class="text-4xl md:text-6xl font-headline text-on-surface">Unser Team</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+<!-- Team Member 1 -->
+<div class="group">
+<div class="aspect-[3/4] overflow-hidden rounded-tl-xl rounded-br-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Portrait of Thomas Weber, Chairman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0PuY3dsKFuwXDblfgstL0iJd3Fz5DjyRQJPdvIErmFPvfu-bN4orl893bZr-5_OHA82coAsE4j-2dltTrxn95RJaIM_xC-6bwH7TEoV5bNWc40RCYD5QCSAJQFF5KUm4gHD8e3nxa4nAqlPk5_EXCkT6kzcrnbmWhfPMQvVn-kvBfClC_wtig-nLVobfKbp79TkBXm6dL3GrcWDBUnRmGo2xo6Lg_-aHippVJnu8yDXiXetA9T3p62t3EAje34r0ZtOKfcgafpEU"/>
+</div>
+<h3 class="text-xl font-headline mb-1">Thomas Weber</h3>
+<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">1. Vorsitzender &amp; Pilot</p>
+</div>
+<!-- Team Member 2 -->
+<div class="group">
+<div class="aspect-[3/4] overflow-hidden rounded-tl-xl rounded-br-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Portrait of Sarah Meyer, Wildlife Biologist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJtW3_dMZPc6B1IC3yZuHF2JSPa-LdpzDdz5hptfAl0uS3d_9PYKjarzxZtArb7JWEJfbkXmHpSghsvQXwwgeuV4ZdPPUsUUBlb49ftPrVaKlr_UF-8-QuLsEaAKNj2WUwI3goL_eUZzbQKqcdziqzN1X0SuAbhKnSzVr0QnxJfvuizBLARm85QKPSATKURPAjyJdgYIBhfGdldby0030hEPS0bajRVKShnm_aJHhHSOWtc0lPslnJgIez7fJ6E7djSXeIdY5R0vI"/>
+</div>
+<h3 class="text-xl font-headline mb-1">Sarah Meyer</h3>
+<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Wildbiologin</p>
+</div>
+<!-- Team Member 3 -->
+<div class="group">
+<div class="aspect-[3/4] overflow-hidden rounded-tl-xl rounded-br-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Portrait of Michael Schmidt, Tech Lead" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgfBFLcfve1B5K9FTS428lLvBA02azkgkw9cnVZiM0ZebgDoRQ68lmb2AR_xx4evkw-98HklVol3msldgIbuZdWV_foy13uTato7gxYDgPp3UapJAqNMww35OSvylXtDcka28WPxaFBbZ_ZuXHIY0v5wkRvBT36vYlXsyqarDgj65HEoQiJ5OWoezdj9UjTU8cgY_3G5DRXDKP9DriIJ4pzFmuejWwuaAgbF6DO-LSimzz78MaMfsqAtrP-v_w9MS0UlBoPwdOhY4"/>
+</div>
+<h3 class="text-xl font-headline mb-1">Michael Schmidt</h3>
+<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Technik &amp; Drohnenwartung</p>
+</div>
+<!-- Team Member 4 -->
+<div class="group">
+<div class="aspect-[3/4] overflow-hidden rounded-tl-xl rounded-br-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Portrait of Elena Berger, Communications" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_q-9XiomcVkDhog_Av7lHrwFluYGlotQmcgWTJErN4IXsSU2WqkNgEjjcj1DJo1N9UwTSolN8Z66JEOQVUX3_8svqTEXMesG5yC2hL-NdUY6VUZ3ZxeqYSa0pNVoJtXAGqwIb7wiN0fVwmcP4rh3GapRyWdrQBZm49PIekHpnD5EevJTVppREf-1RelcRZKoNavp6nN0GeQdKCyDDvFa2eMP9lHQno9L4sHvlZqC40Y88ybMYJvS7fmywd82GTE8i-qG3viOisWw"/>
+</div>
+<h3 class="text-xl font-headline mb-1">Elena Berger</h3>
+<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Kommunikation &amp; Presse</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="max-w-5xl mx-auto px-8 mb-32">
+<div class="bg-primary-container rounded-[2rem] p-12 md:p-20 text-center relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="text-3xl md:text-5xl font-headline text-on-primary-container mb-6 italic">Möchten Sie Teil unserer Mission werden?</h2>
+<p class="text-on-primary-container/80 text-lg mb-10 max-w-2xl mx-auto">
+                        Ob als aktiver Helfer im Morgengrauen oder als Förderer im Hintergrund – wir brauchen Ihre Unterstützung.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label font-bold uppercase tracking-widest hover:bg-on-surface transition-colors">
+                            Mitglied werden
+                        </button>
+<button class="bg-surface-container-lowest text-primary px-8 py-4 rounded-full font-label font-bold uppercase tracking-widest hover:bg-surface-container transition-colors">
+                            Spenden
+                        </button>
+</div>
+</div>
+<!-- Abstract Nature Pattern Background -->
+<div class="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent"></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-[2rem] mt-20 bg-stone-100 dark:bg-stone-950">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-16 max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="font-serif text-xl text-emerald-900 dark:text-emerald-500 mb-6">Rehkitzrettung</div>
+<p class="font-sans text-stone-700 dark:text-stone-400 text-sm leading-relaxed mb-6">
+                    Eingetragener Verein zum Schutz von Wildtieren in der landwirtschaftlichen Ernte.
+                </p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-stone-500 cursor-pointer hover:text-emerald-800" data-icon="facebook">social_leaderboard</span>
+<span class="material-symbols-outlined text-stone-500 cursor-pointer hover:text-emerald-800" data-icon="instagram">retweet</span>
+</div>
+</div>
+<div>
+<p class="font-sans font-bold text-xs uppercase mb-6 text-emerald-900 dark:text-emerald-500">Navigation</p>
+<ul class="flex flex-col gap-4 font-sans text-stone-500">
+<li><a class="hover:underline decoration-emerald-500 underline-offset-4" href="#">Mission</a></li>
+<li><a class="text-emerald-800 dark:text-emerald-400 underline decoration-emerald-500 underline-offset-4" href="#">Team</a></li>
+<li><a class="hover:underline decoration-emerald-500 underline-offset-4" href="#">Sponsors</a></li>
+</ul>
+</div>
+<div>
+<p class="font-sans font-bold text-xs uppercase mb-6 text-emerald-900 dark:text-emerald-500">Rechtliches</p>
+<ul class="flex flex-col gap-4 font-sans text-stone-500">
+<li><a class="hover:underline decoration-emerald-500 underline-offset-4" href="#">Contact</a></li>
+<li><a class="hover:underline decoration-emerald-500 underline-offset-4" href="#">Impressum</a></li>
+<li><a class="hover:underline decoration-emerald-500 underline-offset-4" href="#">Privacy Policy</a></li>
+<li><a class="hover:underline decoration-emerald-500 underline-offset-4" href="#">Newsletter</a></li>
+</ul>
+</div>
+<div>
+<p class="font-sans font-bold text-xs uppercase mb-6 text-emerald-900 dark:text-emerald-500">Zertifiziert</p>
+<div class="bg-stone-200 dark:bg-stone-900 p-4 rounded-xl flex items-center gap-4">
+<span class="material-symbols-outlined text-3xl text-emerald-800" data-icon="verified">verified</span>
+<span class="text-xs font-bold leading-tight">Gemeinnütziger Verein Deutschland</span>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-12 py-8 border-t border-stone-200 dark:border-stone-800 flex justify-between items-center text-[10px] font-sans text-stone-500 uppercase tracking-widest">
+<span>© 2024 Rehkitzrettung Association. Protecting nature's heartbeat.</span>
+<span>Made with love for wildlife</span>
+</div>
+</footer>
+</body></html>
