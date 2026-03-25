@@ -20,7 +20,16 @@ exports.handler = async function(event, context) {
     };
   }
 
-  const teamData = event.body;
+  // Stelle sicher, dass der Body als JSON gespeichert wird
+  let teamData;
+  try {
+    teamData = JSON.stringify(JSON.parse(event.body), null, 2);
+  } catch (e) {
+    return {
+      statusCode: 400,
+      body: 'Ungültiges JSON im Request-Body',
+    };
+  }
 
   // 1. Hole den aktuellen Commit SHA und tree SHA
   const apiBase = `https://api.github.com/repos/${REPO}`;
