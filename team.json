@@ -1,0 +1,12 @@
+[
+  {
+    "name": "Max Mustermann",
+    "role": "Projektleiter",
+    "image": "images/max.jpg"
+  },
+  {
+    "name": "Erika Musterfrau",
+    "role": "Entwicklerin",
+    "image": "images/erika.jpg"
+  }
+]

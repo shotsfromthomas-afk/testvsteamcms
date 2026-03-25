@@ -280,40 +280,27 @@ Unser Ziel ist die flächendeckende Absicherung von Grünflächen während der B
 <span class="font-label text-sm uppercase tracking-[0.2em] text-secondary mb-4 block">Die Köpfe dahinter</span>
 <h2 class="text-4xl md:text-6xl font-headline text-on-surface">Unser Team</h2>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
-<!-- Team Member 1 -->
-<div class="group">
-<div class="aspect-[3/4] overflow-hidden rounded-tl-xl rounded-br-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Portrait of Thomas Weber, Chairman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0PuY3dsKFuwXDblfgstL0iJd3Fz5DjyRQJPdvIErmFPvfu-bN4orl893bZr-5_OHA82coAsE4j-2dltTrxn95RJaIM_xC-6bwH7TEoV5bNWc40RCYD5QCSAJQFF5KUm4gHD8e3nxa4nAqlPk5_EXCkT6kzcrnbmWhfPMQvVn-kvBfClC_wtig-nLVobfKbp79TkBXm6dL3GrcWDBUnRmGo2xo6Lg_-aHippVJnu8yDXiXetA9T3p62t3EAje34r0ZtOKfcgafpEU"/>
-</div>
-<h3 class="text-xl font-headline mb-1">Thomas Weber</h3>
-<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">1. Vorsitzender &amp; Pilot</p>
-</div>
-<!-- Team Member 2 -->
-<div class="group">
-<div class="aspect-[3/4] overflow-hidden rounded-tl-xl rounded-br-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Portrait of Sarah Meyer, Wildlife Biologist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJtW3_dMZPc6B1IC3yZuHF2JSPa-LdpzDdz5hptfAl0uS3d_9PYKjarzxZtArb7JWEJfbkXmHpSghsvQXwwgeuV4ZdPPUsUUBlb49ftPrVaKlr_UF-8-QuLsEaAKNj2WUwI3goL_eUZzbQKqcdziqzN1X0SuAbhKnSzVr0QnxJfvuizBLARm85QKPSATKURPAjyJdgYIBhfGdldby0030hEPS0bajRVKShnm_aJHhHSOWtc0lPslnJgIez7fJ6E7djSXeIdY5R0vI"/>
-</div>
-<h3 class="text-xl font-headline mb-1">Sarah Meyer</h3>
-<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Wildbiologin</p>
-</div>
-<!-- Team Member 3 -->
-<div class="group">
-<div class="aspect-[3/4] overflow-hidden rounded-tl-xl rounded-br-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Portrait of Michael Schmidt, Tech Lead" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgfBFLcfve1B5K9FTS428lLvBA02azkgkw9cnVZiM0ZebgDoRQ68lmb2AR_xx4evkw-98HklVol3msldgIbuZdWV_foy13uTato7gxYDgPp3UapJAqNMww35OSvylXtDcka28WPxaFBbZ_ZuXHIY0v5wkRvBT36vYlXsyqarDgj65HEoQiJ5OWoezdj9UjTU8cgY_3G5DRXDKP9DriIJ4pzFmuejWwuaAgbF6DO-LSimzz78MaMfsqAtrP-v_w9MS0UlBoPwdOhY4"/>
-</div>
-<h3 class="text-xl font-headline mb-1">Michael Schmidt</h3>
-<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Technik &amp; Drohnenwartung</p>
-</div>
-<!-- Team Member 4 -->
-<div class="group">
-<div class="aspect-[3/4] overflow-hidden rounded-tl-xl rounded-br-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
-<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Portrait of Elena Berger, Communications" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_q-9XiomcVkDhog_Av7lHrwFluYGlotQmcgWTJErN4IXsSU2WqkNgEjjcj1DJo1N9UwTSolN8Z66JEOQVUX3_8svqTEXMesG5yC2hL-NdUY6VUZ3ZxeqYSa0pNVoJtXAGqwIb7wiN0fVwmcP4rh3GapRyWdrQBZm49PIekHpnD5EevJTVppREf-1RelcRZKoNavp6nN0GeQdKCyDDvFa2eMP9lHQno9L4sHvlZqC40Y88ybMYJvS7fmywd82GTE8i-qG3viOisWw"/>
-</div>
-<h3 class="text-xl font-headline mb-1">Elena Berger</h3>
-<p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">Kommunikation &amp; Presse</p>
-</div>
-</div>
+<div id="team-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16"></div>
+<script>
+fetch('team.json')
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById('team-container');
+    container.innerHTML = '';
+    data.forEach(member => {
+      const div = document.createElement('div');
+      div.className = 'group';
+      div.innerHTML = `
+        <div class="aspect-[3/4] overflow-hidden rounded-tl-xl rounded-br-xl mb-6 grayscale hover:grayscale-0 transition-all duration-500">
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="${member.image}" alt="${member.name}"/>
+        </div>
+        <h3 class="text-xl font-headline mb-1">${member.name}</h3>
+        <p class="font-label text-xs uppercase tracking-widest text-on-surface-variant">${member.role}</p>
+      `;
+      container.appendChild(div);
+    });
+  });
+</script>
 </section>
 </main>
 <!-- Footer -->
